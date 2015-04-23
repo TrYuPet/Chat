@@ -1,7 +1,8 @@
 /**
  * Created by tryupet on 04.04.15.
  */
-
+//-----//
+/*
 exports.post = function(req, res, next) {
     var sid = req.session.id;
 
@@ -12,4 +13,9 @@ exports.post = function(req, res, next) {
 
         res.redirect('/');
     });
+};
+    */
+exports.post = function(req, res) {
+    req.session.destroy();
+    res.redirect('/');
 };

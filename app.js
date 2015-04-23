@@ -37,15 +37,15 @@ app.use(express.bodyParser());  // доступны в req.body....
 //парсит куки
 app.use(express.cookieParser()); // req.cookies
 
-var sessionStore = require('lib/sessionStore');
-//var MongoStore = require('connect-mongo')(express);
+//  ----- /// var sessionStore = require('lib/sessionStore');
+var MongoStore = require('connect-mongo')(express);
 
 app.use(express.session({
     secret: config.get('session:secret'),
     key: config.get('session:key'),
     cookie: config.get('session:cookie'),
-    store: sessionStore
-    //store: new MongoStore({mongooseConnection: mongoose.connection})
+//  ----- ///    store: sessionStore
+    store: new MongoStore({mongooseConnection: mongoose.connection})
 }));
 
 app.use(require('middleware/sendHttpError'));
@@ -84,5 +84,6 @@ server.listen(config.get('port'), function(){
     log.info('Express server listening on port ' + config.get('port'));
 });
 
-var io = require('./socket')(server);
-app.set('io', io);
+require('./socket')(server);
+//  ----- ///var io = require('./socket')(server);
+//  ----- ///app.set('io', io);
