@@ -8,15 +8,13 @@
 <script src="vendor/bower_components/socket.io-client/dist/socket.io.js"></script>
 
 <div id="room">
-    <ul></ul>
+    <ul class="list-unstyled"></ul>
     <form>
         <input class="form-control" autocomplete="off" autofocus placeholder="Сообщение...">
     </form>
 </div>
 
 <script>
-    var socket = io.connect();
-
     var input = $('#room input');
     var ul = $('#room ul');
     var form = $('#room form');
@@ -63,16 +61,12 @@
         $('<li>').append($('<i>').text(status)).appendTo(ul);
     }
 
-
-
-
-    /*
     function printMessage(text) {
         $('<li>').text(text).appendTo(ul);
     }
 
 
-
+    /*
 
      socket
      .on('message', function(username, message) {
