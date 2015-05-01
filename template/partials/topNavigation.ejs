@@ -8,7 +8,6 @@
     </ul>
     <ul class="nav navbar-nav navbar-right">
         <% if (user) { %>
-        Вы:<%=user.get('username')%>
         <!-- <li><a href="" onclick="$('<form method=POST action=/logout>').submit();return false;"> Выйти </a> </form> </li> -->
         <!-- <li><a id="exit" href="" onclick=""> Выйти </a>  </li>-->
         <li><a href="" onclick="$('<form method=POST action=/logout> </form>').submit();return false"> Выйти </a>  </li>
@@ -17,6 +16,10 @@
         <% } %>
     </ul>
 </nav>
+<% if (user) { %>
+<span id="CurrentUser">Вы:<%=user.get('username')%></span>
+<% } %>
+
 <!--<script type="text/javascript">
     $(document).ready( function() {
         $("exit").onclick(function(){
