@@ -11,3 +11,24 @@
 .login input[type="text"], .login input[type="password"], .login #BntLogin {float: right;}
 .login #BntLogin { padding: 6px 20px; background-color: #696969; border-color: #ffffff; }
 .login #BntLogin:hover { color: #696969; background-color: #ffffff; border-color:#696969; }
+
+#room .me-message, #room .other-message { width: 100%; clear: both; display: inline-block; }
+#room .me-message .me-userName,#room .me-message .me-textMessage { float: right; }
+#room .other-message .other-userName, #room .other-message .other-textMessage { float: left; }
+#room .me-message .me-userName, #room .other-message .other-userName{
+    border: #808080 solid 1px ;
+    border-radius: 3px;
+    padding: 2px 10px;
+    color: #ffffff;
+    background-color: #838B83;
+    font-weight: bold;
+}
+#room .me-message .me-textMessage, #room .other-message .other-textMessage {
+    border: #CDCDB4 solid 1px ;
+    border-radius: 3px;
+    background-color: #CDCDB4;
+    padding: 2px 15px;
+    color: #363636;
+}
+#room .me-message .me-textMessage { margin-right: 10px; }
+#room .other-message .other-textMessage { margin-left: 10px; }
