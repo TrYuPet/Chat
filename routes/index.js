@@ -1,4 +1,6 @@
 var checkAuth = require('middleware/checkAuth');
+var User = require('models/user').User;
+var HttpError = require('error').HttpError;
 
 module.exports = function(app) {
 

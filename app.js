@@ -38,14 +38,14 @@ app.use(express.bodyParser());  // доступны в req.body....
 app.use(express.cookieParser()); // req.cookies
 
 //  ----- /// var sessionStore = require('lib/sessionStore');
-var MongoStore = require('connect-mongo')(express);
+//var MongoStore = require('connect-mongo')(express);
 
 app.use(express.session({
     secret: config.get('session:secret'),
     key: config.get('session:key'),
     cookie: config.get('session:cookie'),
 //  ----- ///    store: sessionStore
-    store: new MongoStore({mongooseConnection: mongoose.connection})
+    store: require('lib/sessionStore')
 }));
 
 app.use(require('middleware/sendHttpError'));
