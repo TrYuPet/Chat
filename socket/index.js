@@ -113,42 +113,6 @@ module.exports = function (server) {
 
     });
 
-    io.on('session:reload', function(sid) {
-
-        //получаем все сокеты
-        var clients = io.sockets.clients();
-
-        clients.forEach(function(client) {
-            //для каждого клиента проверяем, если его сессия не совпадает. то идем дальше
-            if (client.handshake.session.id != sid)  return;
-
-            //иначе используем метод loadSession
-            loadSession(sid, function(err, session) {
-                //если ошибка
-                if (err) {
-                    client.emit("error", "server error");
-                    //отсоединяем клиента
-                    client.disconnect();
-                    return;
-                }
-
-                //если сессия не найдена
-                if (!session) {
-                    //отсоединяем
-                    client.emit("logout");
-                    client.disconnect();
-                    return;
-                }
-
-                //если сессия есть, то записываем в handshake новую сессию
-                client.handshake.session = session;
-            });
-
-        });
-
-    });
-
-
     io.on('connection', function (socket) {
 
         var userRoom = "user:room:" + socket.handshake.user.username;
