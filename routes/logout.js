@@ -1,6 +1,6 @@
 /**
  * Created by tryupet on 04.04.15.
- */
+**/
 exports.post = function (req, res, next) {
 
     var io = req.app.get('io');
