@@ -27,8 +27,8 @@
 
 
     socket
-            .on('message', function (username, message) {
-                printMessage(username + "> " + message);
+            .on('message', function (username, time, message) {
+                printMessage(username + "> " + time +  ' > ' +  message);
             })
             .on("leave", function (username) {
                 printStatus(username + " вышел из чата");
@@ -68,8 +68,9 @@
 
         e.preventDefault();
         var text = input.val();
-        socket.emit('message', text, function () {
-            printMessage('я> ' + text);
+        var time = (new Date).toLocaleTimeString();
+        socket.emit('message', time, text, function () {
+            printMessage('я> ' + time + ' > ' + text);
         });
         input.val('');
     }
@@ -78,44 +79,9 @@
         $('<li>').append($('<i>').text(status)).appendTo(ul);
     }
 
-    function printMessage(text) {
-        $('<li>', {text: text}).appendTo(ul);
+    function printMessage(text, time) {
+        $('<li>', { text: text} ,{time:time}).appendTo(ul);
     }
 
-    /*
 
-     socket
-     .on('message', function(username, message) {
-     printMessage(username + "> " + message);
-     })
-     .on('leave', function(username) {
-     printStatus(username + " вышел из чата");
-     })
-     .on('join', function(username) {
-     printStatus(username + " вошёл в чат");
-     })
-     .on('connect', function() {
-     printStatus("соединение установлено");
-     form.on('submit', sendMessage);
-     input.prop('disabled', false);
-     })
-     .on('disconnect', function() {
-     printStatus("соединение потеряно");
-     form.off('submit', sendMessage);
-     input.prop('disabled', true);
-     setTimeout(reconnect, 500);
-     })
-     .on('logout', function() {
-     location.href = "/";
-     })
-     .on('error', function(reason) {
-     if (reason == "handshake unauthorized") {
-     printStatus("вы вышли из сайта");
-     } else {
-     setTimeout(function () {
-     socket.socket.connect();
-     }, 500);
-     }
-     });
-     */
 </script>

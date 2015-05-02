@@ -121,9 +121,10 @@ module.exports = function (server) {
         var username = socket.handshake.user.username;
 
         socket.broadcast.emit('join', username);
+        var time = (new Date).toLocaleTimeString();
 
-        socket.on('message', function (text, callback) {
-            socket.broadcast.emit('message', username, text);
+        socket.on('message', function (time, text, callback) {
+            socket.broadcast.emit('message', username, time, text);
             callback && callback();
         });
 
