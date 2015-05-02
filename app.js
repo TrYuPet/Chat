@@ -37,6 +37,22 @@ app.use(express.bodyParser());  // доступны в req.body....
 //парсит куки
 app.use(express.cookieParser()); // req.cookies
 
+/*// соединение с БД
+var MongoClient = require('mongodb').MongoClient,
+    format = require('util').format;
+
+var userListDB, chatDB;
+
+// подсоединяемся к БД
+MongoClient.connect('mongodb://127.0.0.1:27017', function (err, db) {
+    if (err) {throw err}
+
+    // записываем ссылки на таблицы (коллекции) в глобальные переменные
+    userListDB = db.collection('users');
+    chatDB = db.collection('chat');
+});
+
+*/
 //  ----- /// var sessionStore = require('lib/sessionStore');
 //var MongoStore = require('connect-mongo')(express);
 
