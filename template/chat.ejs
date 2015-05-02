@@ -28,7 +28,7 @@
 
     socket
             .on('message', function (username, message) {
-                printMessage(username + "> " + message);
+                printMessage(username,message , 'other');
             })
             .on("leave", function (username) {
                 printStatus(username + " вышел из чата");
@@ -69,7 +69,7 @@
         e.preventDefault();
         var text = input.val();
         socket.emit('message', text, function () {
-            printMessage('я> ' + text);
+            printMessage('Я', text, 'me');
         });
         input.val('');
     }
@@ -78,8 +78,26 @@
         $('<li>').append($('<i>').text(status)).appendTo(ul);
     }
 
-    function printMessage(text) {
-        $('<li>', {text: text}).appendTo(ul);
+    function printMessage(name, text, cssClass){
+        var message = $("<div/>",{
+                 "class": cssClass + "-message"
+        })
+
+        var name = $("<span/>", {
+            "class": cssClass + "-userName",
+            "text": name
+        })
+        var textMessage = $("<span/>", {
+            "class": cssClass + "-textMessage",
+            "text": text
+        })
+        var element = $("<li/>", {
+            "class": "mess-el"
+        })
+        name.appendTo(message);
+        textMessage.appendTo(message);
+        message.appendTo(element);
+        element.appendTo(ul);
     }
 
     /*
