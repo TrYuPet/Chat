@@ -1,0 +1,13 @@
+.nav.navbar-nav li:hover { background-color: #f8f8f8; }
+.nav.navbar-nav li a{ color: #f8f8f8; }
+.nav.navbar-nav { margin-right: 0;}
+.nav.navbar-default { margin-right: -15px; margin-left: -15px; background-color: #696969;}
+.container { background-color: #f8f8f8;}
+#CurrentUser { float: right; }
+
+.login input { width: 300px; }
+.login .login-form { width: 400px; }
+.login .form-group label { float: left; }
+.login input[type="text"], .login input[type="password"], .login #BntLogin {float: right;}
+.login #BntLogin { padding: 6px 20px; background-color: #696969; border-color: #ffffff; }
+.login #BntLogin:hover { color: #696969; background-color: #ffffff; border-color:#696969; }

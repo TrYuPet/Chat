@@ -85,5 +85,5 @@ server.listen(config.get('port'), function(){
 });
 
 require('./socket')(server);
-//  ----- ///var io = require('./socket')(server);
-//  ----- ///app.set('io', io);
+var io = require('./socket')(server);
+app.set('io', io);
